@@ -1,4 +1,4 @@
-
+/*
 // You are given a sequence of whole numbers {0,1,2,3 ... , N-1} defined in an array A. where A[i] = i here 0 <= i < N.
 // You need to perform some queries with it. If the query is of
 // Type 0: You are given two integer L and R.(0 <= L <= R < N) You need to find the K such that
@@ -16,53 +16,71 @@
 //     For each query given an integer: type
 //     If type == 0: Given 2 integers L and R.
 //     type == 1: Given 3 integers L, R and D.
+// 5 5
+// 0 1 4
+// 1 2 2 3
+// 0 2 3
+// 1 3 4 3
+// 0 3 4
 // Output Format
 //     The output consists of value of K for all queries of type 0 in separate line.
-
+*/
 import java.util.Scanner;
 
 public class complexqueries {
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in));
+        Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int q = scn.nextInt();
 
+        int []arr = new int[n];
+        for(int i =0;i<n;i++)
+            arr[i]=i+1;
         for(int i=1;i<=q;i++)
         {
             int type = scn.nextInt();
             if(type==0)
-                type0();
+            {
+                int l = scn.nextInt();
+                int r = scn.nextInt();
+                type0(arr,l,r);
+            }
+               
             else
-                type1();
+            {
+                int l = scn.nextInt();
+                int r = scn.nextInt();
+                int d = scn.nextInt();
+                type1(arr,l,r,d);
+            }
         }
         scn.close();
     }
 
-    public static void type0()
+    public static void type0(int[] arr,int l,int r)
     {
-        int l = scn.nextInt();
-        int r = scn.nextInt();
-
         double p =0;
 
         for(int i=l ; i<=r;i++)
         {
-            int x = i+1;
+            int x = arr[i];
             double f = 0;
-            if(Math.cos(x)!=Math.sin(x))
-                f = Math.cos(2*x)/(Math.cos(x)-Math.sin(x));
+            double deg = x;
+            if(Math.cos(deg)!=Math.sin(deg))
+                f = Math.cos(2*deg)/(Math.cos(deg)-Math.sin(deg));
 
             p = p+f;
-        }
 
-        int k  = Math.floor(p);
+        }
+        System.out.println(p);
+        int k=(int)Math.floor(p);
         System.out.println(k);
     }
-    public static void type1()
+    public static void type1(int[] arr,int l,int r ,int d)
     {
-        int l = scn.nextInt();
-        int r = scn.nextInt();
-        int d = scn.nextInt();
+       
+        for(int i=l;i<=r;i++)
+            arr[i]=arr[i]+d;
 
     }
 }
