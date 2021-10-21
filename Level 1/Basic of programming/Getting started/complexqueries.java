@@ -35,7 +35,7 @@ public class complexqueries {
 
         int []arr = new int[n];
         for(int i =0;i<n;i++)
-            arr[i]=i+1;
+            arr[i]=i;
         for(int i=1;i<=q;i++)
         {
             int type = scn.nextInt();
@@ -72,7 +72,6 @@ public class complexqueries {
             p = p+f;
 
         }
-        System.out.println(p);
         int k=(int)Math.floor(p);
         System.out.println(k);
     }
