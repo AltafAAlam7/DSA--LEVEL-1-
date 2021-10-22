@@ -32,5 +32,6 @@ public class patternM {
             }
             System.out.println();
         }
+        scn.close();
     }
 }
