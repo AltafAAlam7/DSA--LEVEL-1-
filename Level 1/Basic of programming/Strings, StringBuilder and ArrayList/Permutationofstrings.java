@@ -3,8 +3,6 @@ public class Permutationofstrings {
     public static void solution(String str){
 		// write your code here
         int n = fact(str.length());
-        System.out.println(n);
-
         for(int i=0;i<n;i++)
         {
             int dec = i;
