@@ -28,7 +28,7 @@ public class sort_low_high {
                 i++;
                 j++;
             }
-            else if(arr[i]>=8 && arr[i]<=b)
+            else if(arr[i]>=a && arr[i]<=b)
             {
                 i++;
             }
