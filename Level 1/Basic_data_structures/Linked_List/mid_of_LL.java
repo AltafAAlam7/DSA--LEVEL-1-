@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 public class mid_of_LL {
   public static class Node {
