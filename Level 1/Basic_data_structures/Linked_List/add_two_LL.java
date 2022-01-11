@@ -392,63 +392,41 @@ public class Main {
       tail = temp;
       tail.next = null;
     }
-    // private LinkedList foldHelper(Node right ,int floor)
-    // {
-    //     if(right==null)
-    //         return new LinkedList();
-        
-    //     LinkedList res =foldHelper(right.next,floor+1);
-       
-    //     if(floor>=this.size/2 && right!=left)
-    //     {
-    //         res.addLast(left.data);
-    //         res.addLast(right.data);
-    //         left=left.next;
-    //     }
-    //     else if(floor==this.size/2 )
-    //     {
-    //         if(left!=right)
-    //             res.addLast(left.data);
-    //         res.addLast(right.data);
-    //         left=left.next;
-    //     }
-
-    //     return res;
-    // }
-    // Node left = null;
-    // public void fold() {
-    //   // write your code here
-    //   left = head;
-    //   LinkedList res = foldHelper(head,0);
-    //   this.head = res.head;
-    //   this.tail = res.tail;
-    //   this.size = res.size;
-    // }
-    private void foldHelper(Node right,int floor)
+    private static int addListsHelper(Node one,int pv1,Node two, int pv2,LinkedList res)
     {
-        if(right==null)
-            return;
-        
-        foldHelper(right.next,floor+1);
-        if(floor>size/2)
+        if(one==null && two==null)
+            return 0;
+        int data=0;
+        if(pv1>pv2)
         {
-            Node temp = left.next;
-            left.next=right;
-            right.next = left.next;
-            left = temp;
+            int oc=addListsHelper(one.next, pv1-1, two, pv2, res);
+            data = one.data+oc;
         }
-        else if(floor==size/2)
+        else if(pv2>pv1)
         {
-            tail=right;
-            tail.next=null;
+           int oc= addListsHelper(one, pv1, two.next, pv2-1, res);
+            data=two.data+oc;
         }
+        else
+        {
+            int oc =addListsHelper(one.next, pv1-1, two.next, pv2-1, res);
+            data = one.data+two.data+oc;
+        }
+        int nd = data%10;
+        int nc = data/10;
+
+        res.addFirst(nd);
+        return nc;
     }
-    Node left = null;
-    public void fold() {
+
+    public static LinkedList addTwoLists(LinkedList one, LinkedList two) {
       // write your code here
-      left = head;
-      foldHelper(head,0);
-      
+      LinkedList res = new LinkedList();
+
+      int oc = addListsHelper(one.head,one.size,two.head,two.size,res);
+      if(oc>0)
+        res.addFirst(oc);
+      return res;
     }
   }
 
@@ -463,14 +441,24 @@ public class Main {
       l1.addLast(d);
     }
 
+    int n2 = Integer.parseInt(br.readLine());
+    LinkedList l2 = new LinkedList();
+    String[] values2 = br.readLine().split(" ");
+    for (int i = 0; i < n2; i++) {
+      int d = Integer.parseInt(values2[i]);
+      l2.addLast(d);
+    }
+
+    LinkedList sum = LinkedList.addTwoLists(l1, l2);
+
     int a = Integer.parseInt(br.readLine());
     int b = Integer.parseInt(br.readLine());
 
     l1.display();
-    l1.fold();
-    l1.display();
-    l1.addFirst(a);
-    l1.addLast(b);
-    l1.display();
+    l2.display();
+    sum.display();
+    sum.addFirst(a);
+    sum.addLast(b);
+    sum.display();
   }
 }
