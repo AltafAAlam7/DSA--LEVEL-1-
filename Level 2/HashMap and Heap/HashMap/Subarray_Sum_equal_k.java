@@ -22,5 +22,6 @@ class Solution {
                 map.put(sum,1);
             }
         }
+        return ans;
     }
 }

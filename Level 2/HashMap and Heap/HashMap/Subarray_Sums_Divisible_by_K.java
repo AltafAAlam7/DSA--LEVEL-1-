@@ -6,7 +6,7 @@ class Solution {
         HashMap<Integer,Integer> map = new HashMap<>();
         
         int sum =0;
-        map.put(sum, 0);
+        map.put(sum, 1);
 
         for(int val: arr){
 
