@@ -1,0 +1,27 @@
+class solution{
+    public int minFuelStops(int targert ,int start,int[][] stations){
+
+        PriorityQueue<Integer> pq = new PriorityQueue<Collections.reverseOrder>();
+        int range = start;
+        int pumps = 0;
+        int i=0;
+        while(range < targert){
+            while(i<stations.length){
+
+                if(stations[i][0]<=range){
+                    pq.add(stations[i][1]);
+                }
+                else
+                    break;
+                i++;
+            }
+
+            if(queue.size()==0)
+                return -1;
+            range+=pq.remove();
+            pumps++;
+        }
+
+        return pumps;
+    }
+}

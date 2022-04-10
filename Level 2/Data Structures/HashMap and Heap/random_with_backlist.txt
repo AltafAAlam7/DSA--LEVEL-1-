@@ -1,0 +1,41 @@
+class Solution {
+    HashMap<Integer,Integer> map = new HashMap<>();
+    Random r;
+    int max ;
+    public Solution(int n, int[] blacklist) {
+         // intial HashMap
+        for(int i=0;i<blacklist.length;i++){
+            map.put(blacklist[i],-1);
+        }
+        int j = n -1;
+        max = n - blacklist.length;
+        
+        for(int val : blacklist){
+            if(val < max){
+               while(map.containsKey(j)){
+                   j--;
+               }
+               map.put(val,j);
+                j--;
+            }
+        }
+    }
+    
+    public int pick() {
+        r = new Random();
+        int no = r.nextInt(max);
+        
+        if(map.containsKey(no)){
+            return map.get(no);
+        }
+        else{
+            return no;
+        }
+    }
+}
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(n, blacklist);
+ * int param_1 = obj.pick();
+ */
