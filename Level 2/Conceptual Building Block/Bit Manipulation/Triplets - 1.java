@@ -3,8 +3,19 @@ import java.util.*;
 
 public class Main {
 
-	public static void solution(int[] arr){
+	public static int solution(int[] arr){
 		//write your code here
+        int count  = 0 ;
+        for(int i=0;i<arr.length;i++){
+            int xor = arr[i];
+            for(int k=i+1;k<arr.length;k++){
+                xor^=arr[k];
+                if(xor==0)
+                    count+=k-i;
+            }
+        }
+
+        return count;
 		
     }
 	public static void main(String[] args) {
@@ -14,7 +25,7 @@ public class Main {
         for(int i = 0 ; i < arr.length; i++){
             arr[i] = scn.nextInt();
         }
-        solution(arr);
+        System.out.println(solution(arr));
     }
 	
 	
