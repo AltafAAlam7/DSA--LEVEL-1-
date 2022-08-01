@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class All_repeating_except_two {
 
   public static void main(String[] args){
     Scanner scn = new Scanner(System.in);
